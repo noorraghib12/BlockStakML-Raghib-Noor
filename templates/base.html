@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!-- Bootstrap Plugins added to base template -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous"
+        />
+        <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous"
+        />
+        <title>{% block title %}Tele Customer Profiler{% endblock %}</title>
+    </head>
+    <!-- Background Image added from static to base template-->
+    <body style="background-color:peru;background-repeat:no-repeat;background-size:2050px 1100px;"> 
+        <!-- Bootstrap navbar class integrated -->
+        {% with messages= get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category,message in messages %}
+            {% if category=='error'%} 
+            <div class="alert alert-danger alert-dismissable fade show" role="alert">
+                {{message}}
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% else %}
+            <div class="alert alert-success alert-dismissable fade show" role="alert">
+                {{message}}
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endif %}
+            {% endfor %}
+        {% endif %} 
+        {% endwith %}   
+    <div class="container">
+
+        <style>
+            h3{
+                font-size:500%;
+                color:white;
+            }
+            label{
+                font-size:150%;
+                color:white;
+            }
+        </style>
+        
+        <form method="POST" action="customer_profile">
+            <br />
+            <br />
+            <br />
+            <h3 align="center"><em><strong>Telemarket Lead Profiler</strong></em></h3>
+            <br />
+            <br />
+            <br />
+            <div class="form-group">
+                <label for="age"><strong>Customer Age</strong></label>
+                <input type="number" class="form-control" id="age" name="age" min="19">
+                <label for="balance"><strong>Bank Balance</strong></label>
+                <input type="number" class="form-control" id="balance" name="balance">
+                <label for="duration"><strong>Last Call Duration</strong></label>
+                <input type="number" class="form-control" id="duration" name="duration">
+                <label for="campaign"><strong>No of Interactions (Current Campaign)</strong></label>
+                <input type="number" class="form-control" id="campaign" name="campaign">
+                <label for="previous"><strong>No of Interactions (Previous Campaigns)</strong></label>
+                <input type="number" class="form-control" id="previous" name="previous">
+                <label for="job"><strong> Job Position</strong></label>
+                <select class="form-control" id="job" name="cars">
+                    <option value="unemployed">Unemployed</option>
+                    <option value="services">services</option>
+                    <option value="management">Management</option>
+                    <option value="blue-collar">Blue Collar</option>
+                    <option value="self-employed">Self Employed</option>
+                    <option value="technician">Technician</option>
+                    <option value="entrepreneur">Entrepreneur</option>
+                    <option value="admin.">Adminstration</option>
+                    <option value="student">Student</option>
+                    <option value="housemaid">Housemaid</option>
+                    <option value="retired">Retired</option>
+        
+                    
+                </select>
+                <label for="marital_status"><strong>Marital Status</strong></label><br>
+                <div>
+                    <input type="radio" id="marital_status" name="marital_status" value="married"> <strong style="color:darkred"> Married</strong> </input>
+                    <input type="radio" id="marital_status" name="marital_status" value="single"> <strong style="color:darkred"> Single</strong> </input>
+                </div>
+                <label for="education"><strong>Education Level</strong></label><br>
+                <div>
+                    <input type="radio" id="education" name="education" value="primary"> <strong style="color:darkred"> Primary</strong> </input>
+                    <input type="radio" id="education" name="education" value="secondary"> <strong style="color:darkred"> Secondary</strong> </input>
+                    <input type="radio" id="education" name="education" value="tertiary"> <strong style="color:darkred"> Tertiary</strong> </input>
+                </div>
+                <label for="default"><strong>Loan Defaulting History</strong></label><br>
+                <div>
+                    <input type="radio" id="default" name="default" value="yes"> <strong style="color:darkred"> Yes</strong> </input>
+                    <input type="radio" id="default" name="default" value="no"> <strong style="color:darkred"> No</strong> </input>
+                </div>
+                <label for="housing"><strong>House Owner Status</strong></label><br>
+                <div>
+                    <input type="radio" id="housing" name="housing" value="yes"> <strong style="color:darkred"> Yes</strong> </input>
+                    <input type="radio" id="housing" name="housing" value="no"> <strong style="color:darkred"> No</strong> </input>
+                </div>
+                <label for="loan"><strong> Loan Previously Taken</strong></label><br>
+                <div>
+                    <input type="radio" id="loan" name="loan" value="yes"> <strong style="color:darkred"> Yes</strong> </input>
+                    <input type="radio" id="loan" name="loan" value="no"> <strong style="color:darkred"> No</strong> </input>
+                </div>
+
+            </div>
+            <br />
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        </div>
+    <!-- Javascript plugins and cdn required for Bootstrap plugins -->
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+    <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+    </body>
+</html>
