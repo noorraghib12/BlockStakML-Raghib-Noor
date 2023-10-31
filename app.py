@@ -8,10 +8,14 @@ from flask import (Flask,
                    redirect, 
                    url_for,
                    current_app)
-
-from joblib import load
+from utils import YesNoBinarize
+import joblib
 import pandas as pd
 
+
+preprocessor=joblib.load('preprocessor.joblib')
+tree=joblib.load('tree.joblib')
+result_dict={1:"yes",0:"no"}
 
 
 app=Flask(__name__)
@@ -23,11 +27,10 @@ def index():
 @app.route('/customer_profile',methods=["GET","POST"])
 def customer_profile():
     if request.method=='POST':
-        entry=pd.DataFrmae(request.form)
-        #INCOMPLETE
-        #send entry to preprocessor from utils
-        #use best model to predict, send prediction
-        #return jsonify(results)
+        entry=pd.DataFrame(request.form,index=[0])
+        entry_processed=preprocessor.transform(entry)
+        pred=tree.predict(entry_processed)[0]
+        return {'result':result_dict[pred]}     
     return render_template('base.html')
 
 

@@ -65,19 +65,19 @@
             <br />
             <div class="form-group">
                 <label for="age"><strong>Customer Age</strong></label>
-                <input type="number" class="form-control" id="age" name="age" min="19">
+                <input type="number" class="form-control" id="age" name="age" min="19" max="100">
                 <label for="balance"><strong>Bank Balance</strong></label>
                 <input type="number" class="form-control" id="balance" name="balance">
                 <label for="duration"><strong>Last Call Duration</strong></label>
-                <input type="number" class="form-control" id="duration" name="duration">
+                <input type="number" class="form-control" id="duration" name="duration" min="0">
                 <label for="campaign"><strong>No of Interactions (Current Campaign)</strong></label>
                 <input type="number" class="form-control" id="campaign" name="campaign">
                 <label for="previous"><strong>No of Interactions (Previous Campaigns)</strong></label>
                 <input type="number" class="form-control" id="previous" name="previous">
                 <label for="job"><strong> Job Position</strong></label>
-                <select class="form-control" id="job" name="cars">
+                <select name="job" class="form-control" id="job">
                     <option value="unemployed">Unemployed</option>
-                    <option value="services">services</option>
+                    <option value="services">Services</option>
                     <option value="management">Management</option>
                     <option value="blue-collar">Blue Collar</option>
                     <option value="self-employed">Self Employed</option>
@@ -92,8 +92,8 @@
                 </select>
                 <label for="marital_status"><strong>Marital Status</strong></label><br>
                 <div>
-                    <input type="radio" id="marital_status" name="marital_status" value="married"> <strong style="color:darkred"> Married</strong> </input>
-                    <input type="radio" id="marital_status" name="marital_status" value="single"> <strong style="color:darkred"> Single</strong> </input>
+                    <input type="radio" id="marital_status" name="marital" value="married"> <strong style="color:darkred"> Married</strong> </input>
+                    <input type="radio" id="marital_status" name="marital" value="single"> <strong style="color:darkred"> Single</strong> </input>
                 </div>
                 <label for="education"><strong>Education Level</strong></label><br>
                 <div>

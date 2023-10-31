@@ -15,43 +15,16 @@ class YesNoBinarize(BaseEstimator,TransformerMixin):
         self.keys=keys
         
     def fit(self, X,y=None):
-        self.X_=X.copy()
         return self
     
     def transform(self, X,y=None):
+        X_=X.copy()
         for key in self.keys:
-            if key in self.X_:
-                self.X_[key]=self.X_[key].apply(lambda x:1 if x=='yes' else 0)    
+            if key in X_:
+                X_[key]=X_[key].apply(lambda x:1 if x==('yes' or 'married') else 0)    
             else:
                 continue
-        return self.X_
-
-
-
-numeric_features = ["age", "balance",'duration','campaign','previous']
-numeric_transformer = Pipeline(
-    steps=[("scaler", StandardScaler())]
-)
-
-categorical_features = ["education", "job"]
-categorical_transformer = Pipeline(
-    steps=[
-        ("encoder", OneHotEncoder()),]
-)
-
-binary_features = ['default','loan','housing',]
-binary_transformer = Pipeline(
-    steps=[
-        ("encoder",YesNoBinarize(binary_features))
-    ]
-)
-preprocessor = ColumnTransformer(
-    transformers=[
-        ("num", numeric_transformer, numeric_features),
-        ("cat", categorical_transformer, categorical_features),
-        ("bin", binary_transformer, binary_features),
-    ]
-)
+        return X_
 
 
 
